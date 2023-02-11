@@ -1,4 +1,22 @@
 #include <math.h>
+#include <assert.h>
+
+// https://www.codewars.com/kata/5886e082a836a691340000c3
+//
+// Task
+//
+// A rectangle with sides equal to even integers a and b is drawn on the Cartesian plane. 
+// Its center (the intersection point of its diagonals) coincides with the point (0, 0), 
+// but the sides of the rectangle are not parallel to the axes; instead, they are forming 
+// 45 degree angles with the axes.
+//
+// How many points with integer coordinates are located inside the given rectangle 
+// (including on its sides)?
+//
+// Example
+// For a = 6 and b = 4, the output should be 23
+//
+// The following picture illustrates the example, and the 23 points are marked green.
 
 long long rectangle_rotation(int a, int b)
 {
@@ -25,14 +43,14 @@ long long rectangle_rotation(int a, int b)
         main_b = max_b;
     }
 
-    return main_a * main_b + sec_a * sec_b; // Do your magic!
+    return main_a * main_b + sec_a * sec_b;
 }
 
 int main(int argc, char* argv[]) {
-    long long r0 = rectangle_rotation(6,4); // 23
-    long long r1 = rectangle_rotation(30,2); // 65
-    long long r2 = rectangle_rotation(8,6); // 49
-    long long r3 = rectangle_rotation(16,20); // 333
+    assert(rectangle_rotation(6,4) == 23);
+    assert(rectangle_rotation(30,2) == 65);
+    assert(rectangle_rotation(8,6) == 49);
+    assert(rectangle_rotation(16,20) == 333);
 
     return 0;
 }

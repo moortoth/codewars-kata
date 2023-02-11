@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 int last_digit(const char *a, const char *b)
 {
@@ -33,9 +34,5 @@ int last_digit(const char *a, const char *b)
 }
 
 int main(int argc, int **argv) {
-    int res = last_digit("18252", 
-    "300552066198");
-    
-    // Actual*: 6
-    // Expected: 4
+    int res = last_digit("18252", "300552066198");
 }

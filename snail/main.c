@@ -1,6 +1,25 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1
+//
+// Snail Sort
+//
+// Given an n x n array, return the array elements arranged from outermost elements 
+// to the middle element, traveling clockwise.
+//
+// array = [[1,2,3],
+//          [4,5,6],
+//          [7,8,9]]
+// snail(array) #=> [1,2,3,6,9,8,7,4,5]
+//
+// For better understanding, please follow the numbers of the next array consecutively:
+//
+// array = [[1,2,3],
+//          [8,9,4],
+//          [7,6,5]]
+// snail(array) #=> [1,2,3,4,5,6,7,8,9]
+
 int *snail(size_t *outsz, const int **mx, size_t rows, size_t cols) {
     *outsz = cols*rows;
     if (cols==rows==0) return 0;
@@ -47,9 +66,7 @@ int *snail(size_t *outsz, const int **mx, size_t rows, size_t cols) {
 }
 
 int main(int argc, char *argv[]) {
-    //assert_data((const int[]){ 1,2,3, 4,5,6, 7,8,9 }, 3ul, 3ul, (const int[]){ 1,2,3,6,9,8,7,4,5 }, 9ul);
-    //assert_data((const int[]){ 1,2,3, 8,9,4, 7,6,5 }, 3ul, 3ul, (const int[]){ 1,2,3,4,5,6,7,8,9 }, 9ul);
-    //assert_data((const int[]){ 1,2,3,1, 4,5,6,4, 7,8,9,7, 7,8,9,7 }, 4ul, 4ul, (const int[]){ 1,2,3,1,4,7,7,9,8,7,7,4,5,6,9,8 }, 16ul);
+    
     int **m = calloc(3, sizeof(int*));
     for (int i = 0; i < 3; ++i) {
         m[i] = calloc(3, sizeof(int));

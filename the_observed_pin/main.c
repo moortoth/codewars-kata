@@ -3,11 +3,42 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-//Function should return an array of c-strings with all possible PINs.
-//It must allocate all required meomry, but there are no requirements
-//as to how it should be done. It must be possible to free
-//allocated memo_adjry with a call to free_pins.
-//Upon return, count should contain the amount of returned PINs.
+// https://www.codewars.com/kata/5263c6999e0f40dee200059d
+
+// Alright, detective, one of our colleagues successfully observed our target person, 
+// Robby the robber. We followed him to a secret warehouse, where we assume to find 
+// all the stolen stuff. The door to this warehouse is secured by an electronic combination lock.
+// Unfortunately our spy isn't sure about the PIN he saw, when Robby entered it.
+//
+// The keypad has the following layout:
+//
+// ┌───┬───┬───┐
+// │ 1 │ 2 │ 3 │
+// ├───┼───┼───┤
+// │ 4 │ 5 │ 6 │
+// ├───┼───┼───┤
+// │ 7 │ 8 │ 9 │
+// └───┼───┼───┘
+//     │ 0 │
+//     └───┘
+//
+// He noted the PIN 1357, but he also said, it is possible that each of the digits 
+// he saw could actually be another adjacent digit (horizontally or vertically, but not diagonally). 
+// E.g. instead of the 1 it could also be the 2 or 4. And instead of the 5 it could 
+// also be the 2, 4, 6 or 8.
+//
+// He also mentioned, he knows this kind of locks. You can enter an unlimited amount of wrong PINs,
+// they never finally lock the system or sound the alarm. That's why we can try 
+// out all possible (*) variations.
+
+// * possible in sense of: the observed PIN itself and all variations considering the adjacent digits
+
+// Function should return an array of c-strings with all possible PINs.
+// It must allocate all required meomry, but there are no requirements
+// as to how it should be done. It must be possible to free
+// allocated memo_adjry with a call to free_pins.
+// Upon return, count should contain the amount of returned PINs.
+
 const char** get_pins(const char* observed, size_t* count) {
     if (*observed == '\0')
     {
@@ -75,22 +106,15 @@ const char** get_pins(const char* observed, size_t* count) {
     return res;
 }
 
-//This function will be called once per every call to get_pins
-//with a pointer value returned by such call.
+// This function will be called once per every call to get_pins
+// with a pointer value returned by such call.
+
 void free_pins(const char ** pins) {
     free(pins);
 }
 
 int main(int argc, char* argv[]) 
 {
-    // const char* observed = "8";
-    // size_t expected_count = 5;
-    // const char *const expected_pins[] = { "0", "5", "7", "8", "9" };
-
-    // const char* observed = "11";
-    // size_t expected_count = 9;
-    // const char *const expected_pins2[] = { "11", "12", "14", "21", "22", "24", "41", "42", "44" };
-
     const char* observed = "369";
     size_t expected_count = 36;
     const char *const expected_pins3[] = { "236", "238", "239", "256", "258", "259", "266", "268", "269", "296", "298", "299", "336", "338", "339", "356", "358", "359", "366", "368", "369", "396", "398", "399", "636", "638", "639", "656", "658", "659", "666", "668", "669", "696", "698", "699" };

@@ -1,6 +1,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <assert.h>
+
+// https://www.codewars.com/kata/525f4206b73515bffb000b21
+
+// We need to sum big numbers and we require your help.
+// Write a function that returns the sum of two numbers. 
+// The input numbers are strings and the function must return a string.
+
+// Example
+// add("123", "321"); // returns "444"
+// add("11", "99");   // returns "110"
+//
+// Notes
+// The input numbers are big.
+// The input is a string of only digits
+// The numbers are positives
 
 char *add(const char *a, const char *b) 
 {
@@ -33,17 +49,6 @@ char *add(const char *a, const char *b)
 
 int main(int argc, char* argv[]) 
 {
-    // tester("1", "1", "2");
-    //char* res1 = strsum("1", "1");
-    // tester("123", "456", "579");  // 123 + 456 == 579
-    //char* res2 = strsum("123", "456");
-    // tester("888", "222", "1110");
-    //char* res3 = strsum("888", "222");
-    // tester("1372", "69", "1441");
-    char *res_lead_zeros = strsum("00001", "9");
-    char* res = strsum("36294500649", "5175666562665014609");
-    //char* res_a = strsum("0", "0");
-    char* res_b = strsum("99", "1");
-//Expected:  5175666598959515258
-//Submitted: 51756665989595152584
+    assert(strcmp(add("36294500649", "5175666562665014609"), "5175666598959515258") == 0);
+    return 0;
 }
